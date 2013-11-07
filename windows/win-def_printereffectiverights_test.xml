@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oval_definitions xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:win-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+  <generator>
+    <oval:schema_version>5.10.1</oval:schema_version>
+    <oval:timestamp>2009-01-12T10:41:00-05:00</oval:timestamp>
+    <terms_of_use>Copyright (c) 2002-2013, The MITRE Corporation. All rights reserved. The contents of this file are subject to the license described in terms.txt.</terms_of_use>
+  </generator>
+  <definitions>
+    <definition id="oval:org.mitre.oval.test:def:742" version="1" class="miscellaneous">
+      <metadata>
+        <title>Evaluate to true if the win-def:printereffectiverights_test is properly supported.</title>
+        <description>This definition is intended to evalutate to true if the interpreter properly supports the win-def:printereffectiverights_test.</description>
+      </metadata>
+      <notes>
+        <note>It is important to note that the values used in this test definition are specific to a particular machine, and may not necessarily apply to your system. As a result, in order to have the definition return a result of 'true', you must either change these values to the ones found on your particular system, or you must configure your system to use these values.</note>
+      </notes>
+      <criteria>
+        <criterion comment="Test that a printereffectiverights_object with a printer_name and trustee_sid is supported." test_ref="oval:org.mitre.oval.test:tst:1403"/>
+        <criterion comment="Test that a printereffectiverights_object with a printer_name and trustee_sid not equals is supported." test_ref="oval:org.mitre.oval.test:tst:1206"/>
+        <criterion comment="Test that a printereffectiverights_object with a printer_name and trustee_sid with a pattern match is supported." test_ref="oval:org.mitre.oval.test:tst:1207"/>
+        <criterion comment="Test that a printereffectiverights_object with a printer_name pattern match and trustee_sid is supported." test_ref="oval:org.mitre.oval.test:tst:1326"/>
+        <criterion comment="Test that a printereffectiverights_object with a printer_name not equals and trustee_sid is supported." test_ref="oval:org.mitre.oval.test:tst:1377"/>
+        <criterion comment="Test that the resolve_group behavior is supported." test_ref="oval:org.mitre.oval.test:tst:499"/>
+        <criterion comment="Test that the include_group behavior is supported." test_ref="oval:org.mitre.oval.test:tst:1197"/>
+      </criteria>
+    </definition>
+  </definitions>
+  <tests>
+    <printereffectiverights_test id="oval:org.mitre.oval.test:tst:1403" version="1" comment="Test that a printereffectiverights_object with a printer_name and trustee_sid is supported." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:476"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:319"/>
+    </printereffectiverights_test>
+    <printereffectiverights_test id="oval:org.mitre.oval.test:tst:1206" version="1" comment="Test that a printereffectiverights_object with a printer_name and trustee_sid not equals is supported." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:1008"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:1178"/>
+    </printereffectiverights_test>
+    <printereffectiverights_test id="oval:org.mitre.oval.test:tst:1207" version="1" comment="Test that a printereffectiverights_object with a printer_name and trustee_sid with a pattern match is supported." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:914"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:923"/>
+    </printereffectiverights_test>
+    <printereffectiverights_test id="oval:org.mitre.oval.test:tst:1326" version="1" comment="Test that a printereffectiverights_object with a printer_name pattern match and trustee_sid is supported." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:459"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:1132"/>
+    </printereffectiverights_test>
+    <printereffectiverights_test id="oval:org.mitre.oval.test:tst:1377" version="1" comment="Test that a printereffectiverights_object with a printer_name not equals and trustee_sid is supported." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:1058"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:269"/>
+    </printereffectiverights_test>
+    <printereffectiverights_test id="oval:org.mitre.oval.test:tst:499" version="1" comment="Test that the resolve_group behavior is supported." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:1057"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:1243"/>
+    </printereffectiverights_test>
+    <printereffectiverights_test id="oval:org.mitre.oval.test:tst:1197" version="1" comment="Test that the include_group behavior is supported." check_existence="at_least_one_exists" check="only one" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:79"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:1058"/>
+    </printereffectiverights_test>
+  </tests>
+  <objects>
+    <printereffectiverights_object id="oval:org.mitre.oval.test:obj:476" version="1" comment="This object represents a printereffectiverights_object with a printer_name equal to 'Microsoft XPS Document Writer' and trustee_sid equal to 'S-1-5-32-544'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <printer_name>Microsoft XPS Document Writer</printer_name>
+      <trustee_sid>S-1-5-32-544</trustee_sid>
+    </printereffectiverights_object>
+    <printereffectiverights_object id="oval:org.mitre.oval.test:obj:1008" version="1" comment="This object represents a printereffectiverights_object with a printer_name equal to 'Microsoft XPS Document Writer' and trustee_sid not equal to 'S-1-5-32-544'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <printer_name>Microsoft XPS Document Writer</printer_name>
+      <trustee_sid operation="not equal">S-1-5-32-544</trustee_sid>
+    </printereffectiverights_object>
+    <printereffectiverights_object id="oval:org.mitre.oval.test:obj:914" version="1" comment="This object represents a printereffectiverights_object with a printer_name equal to 'Microsoft XPS Document Writer' and trustee_sid that matches the regular expression '^S-1-5-32-54[0-9]$'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <printer_name>Microsoft XPS Document Writer</printer_name>
+      <trustee_sid operation="pattern match">^S-1-5-32-54[0-9]$</trustee_sid>
+    </printereffectiverights_object>
+    <printereffectiverights_object id="oval:org.mitre.oval.test:obj:459" version="1" comment="This object represents a printereffectiverights_object with a printer_name that matches the regular expression '^Microsoft [A-Z]{3} Document Writer$' and trustee_sid that equals 'S-1-5-32-544'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <printer_name operation="pattern match">^Microsoft [A-Z]{3} Document Writer$</printer_name>
+      <trustee_sid>S-1-5-32-544</trustee_sid>
+    </printereffectiverights_object>
+    <printereffectiverights_object id="oval:org.mitre.oval.test:obj:1058" version="1" comment="This object represents a printereffectiverights_object with a printer_name not equal to 'some_printer_name' and trustee_sid equal to 'S-1-5-32-544'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <printer_name operation="not equal">some_printer_name</printer_name>
+      <trustee_sid>S-1-5-32-544</trustee_sid>
+    </printereffectiverights_object>
+    <printereffectiverights_object id="oval:org.mitre.oval.test:obj:1057" version="1" comment="This object represents a printereffectiverights_object with a printer_name equal to 'Microsoft XPS Document Writer' and a trustee_sid equal to 'S-1-5-32-544' with the resolve_group behavior set to 'true' and the include_group behavior set to 'false'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <behaviors resolve_group="true" include_group="false"/>
+      <printer_name>Microsoft XPS Document Writer</printer_name>
+      <trustee_sid>S-1-5-32-544</trustee_sid>
+    </printereffectiverights_object>
+    <printereffectiverights_object id="oval:org.mitre.oval.test:obj:79" version="1" comment="This object represents a printereffectiverights_object with a printer_name equal to 'Microsoft XPS Document Writer' and a trustee_sid equal to 'S-1-5-32-544' with the resolve_group behavior set to 'true' and the include_group behavior set to 'true'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <behaviors resolve_group="true" include_group="true"/>
+      <printer_name>Microsoft XPS Document Writer</printer_name>
+      <trustee_sid>S-1-5-32-544</trustee_sid>
+    </printereffectiverights_object>
+  </objects>
+  <states>
+    <printereffectiverights_state id="oval:org.mitre.oval.test:ste:319" version="1" comment="This state represents a printereffectiverights_object which has a printer_name equal to 'Microsoft XPS Document Writer' and trustee_sid equal to 'S-1-5-32-544'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <printer_name>Microsoft XPS Document Writer</printer_name>
+      <trustee_sid>S-1-5-32-544</trustee_sid>
+    </printereffectiverights_state>
+    <printereffectiverights_state id="oval:org.mitre.oval.test:ste:1178" version="1" comment="This state represents a printereffectiverights_object which has a printer_name equal to 'Microsoft XPS Document Writer' and trustee_sid not equal to 'S-1-5-32-544'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <printer_name>Microsoft XPS Document Writer</printer_name>
+      <trustee_sid operation="not equal">S-1-5-32-544</trustee_sid>
+    </printereffectiverights_state>
+    <printereffectiverights_state id="oval:org.mitre.oval.test:ste:923" version="1" comment="This state represents a printereffectiverights_object which has a printer_name equal to 'Microsoft XPS Document Writer' and trustee_sid that matches the regular expression '^S-1-5-32-54[0-9]$'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <printer_name>Microsoft XPS Document Writer</printer_name>
+      <trustee_sid operation="pattern match">^S-1-5-32-54[0-9]$</trustee_sid>
+    </printereffectiverights_state>
+    <printereffectiverights_state id="oval:org.mitre.oval.test:ste:1132" version="1" comment="This state represents a printereffectiverights_object which has a printer_name that matches the regular expression '^Microsoft [A-Z]{3} Document Writer$' and trustee_sid equal to 'S-1-5-32-544'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <printer_name operation="pattern match">^Microsoft [A-Z]{3} Document Writer$</printer_name>
+      <trustee_sid>S-1-5-32-544</trustee_sid>
+    </printereffectiverights_state>
+    <printereffectiverights_state id="oval:org.mitre.oval.test:ste:269" version="1" comment="This state represents a printereffectiverights_object which has a printer_name not equal to 'some_printer_name' and trustee_sid equal to 'S-1-5-32-544'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <printer_name operation="not equal">some_printer_name</printer_name>
+      <trustee_sid>S-1-5-32-544</trustee_sid>
+    </printereffectiverights_state>
+    <printereffectiverights_state id="oval:org.mitre.oval.test:ste:1243" version="1" comment="This state represents a printereffectiverights_object which has a printer_name equal to 'Microsoft XPS Document Writer' and trustee_sid not equal to 'S-1-5-32-544'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <printer_name>Microsoft XPS Document Writer</printer_name>
+      <trustee_sid operation="not equal">S-1-5-32-544</trustee_sid>
+    </printereffectiverights_state>
+    <printereffectiverights_state id="oval:org.mitre.oval.test:ste:1058" version="1" comment="This state represents a printereffectiverights_object which has a printer_name equal to 'Microsoft XPS Document Writer' and trustee_sid equal to 'S-1-5-32-544'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <printer_name>Microsoft XPS Document Writer</printer_name>
+      <trustee_sid>S-1-5-32-544</trustee_sid>
+    </printereffectiverights_state>
+  </states>
+</oval_definitions>

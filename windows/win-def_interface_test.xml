@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<oval_definitions xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd      http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:win-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+  <generator>
+    <oval:schema_version>5.10.1</oval:schema_version>
+    <oval:timestamp>2009-01-12T10:41:00-05:00</oval:timestamp>
+    <terms_of_use>Copyright (c) 2002-2013, The MITRE Corporation. All rights reserved. The contents of this file are subject to the license described in terms.txt.</terms_of_use>
+  </generator>
+  <definitions>
+    <definition id="oval:org.mitre.oval.test:def:28" version="1" class="miscellaneous">
+      <metadata>
+        <title>Evaluate to true if the win-def:interface_test probe is properly supported</title>
+        <description>This definition is intended to evalutate to true if the interpreter properly supports the win-def:interface_test probe.</description>
+      </metadata>
+      <notes>
+        <note>It is important to note that the values used in this test definition are specific to a particular machine, and may not necessarily apply to your system. As a result, in order to have the definition return a result of 'true', you must either change these values to the ones found on your particular system, or you must configure your system to use these values.</note>
+        <note>Information regarding the interfaces on your particular machine can be found by navigating to Start->Settings->Network Connections. The interfaces on your machine should be listed under the 'LAN or High-Speed Internet' section. Additional information about a particular interface can be found by right-clicking an interface and selecting 'Status', then clicking on the 'Support' tab, and then lastly click the 'Details...' button.</note>
+      </notes>
+      <criteria operator="AND">
+        <criterion comment="Test that an interface_object with a name is supported." test_ref="oval:org.mitre.oval.test:tst:1266"/>
+        <criterion comment="Test that an interface_object with a name pattern match is supported." test_ref="oval:org.mitre.oval.test:tst:1353"/>
+        <criterion comment="Test that an interface_object with a name not equals is supported." test_ref="oval:org.mitre.oval.test:tst:1153"/>
+      </criteria>
+    </definition>
+  </definitions>
+  <tests>
+    <interface_test id="oval:org.mitre.oval.test:tst:1266" version="1" comment="Test that an interface_object with a name is supported." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:1063"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:357"/>
+    </interface_test>
+    <interface_test id="oval:org.mitre.oval.test:tst:1353" version="1" comment="Test that an interface_object with a name pattern match is supported." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:398"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:890"/>
+    </interface_test>
+    <interface_test id="oval:org.mitre.oval.test:tst:1153" version="1" comment="Test that an interface_object with a name not equals is supported." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:715"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:890"/>
+    </interface_test>
+  </tests>
+  <objects>
+    <interface_object id="oval:org.mitre.oval.test:obj:1063" version="1" comment="Retrieve the interface object with a name equal to 'MS TCP Loopback interface'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <name>MS TCP Loopback interface</name>
+    </interface_object>
+    <interface_object id="oval:org.mitre.oval.test:obj:398" version="1" comment="Retrieve the interface objects with names that match the regular expression 'MS TCP Loopback .*'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <name operation="pattern match">MS TCP Loopback .*</name>
+    </interface_object>
+    <interface_object id="oval:org.mitre.oval.test:obj:715" version="1" comment="Retrieve the interface objects with names that do not equal 'MS TCP Loopback interface'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <name operation="not equal">MS TCP Loopback interface</name>
+    </interface_object>
+  </objects>
+  <states>
+    <interface_state id="oval:org.mitre.oval.test:ste:357" version="1" comment="This state represents an interface with a name of 'MS TCP Loopback interface', an index greater than or equal to '0', a type that matches the regular expression '.*', an IP address of '127.0.0.1', a broadcast address of '127.255.255.255', a subnet mask of '255.0.0.0', and a address type that matches the regular expression '.*'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <name>MS TCP Loopback interface</name>
+      <index datatype="int" operation="greater than or equal">0</index>
+      <type operation="pattern match" var_ref="oval:org.mitre.oval.test:var:84" var_check="all"/>
+      <inet_addr>127.0.0.1</inet_addr>
+      <broadcast_addr>127.255.255.255</broadcast_addr>
+      <netmask>255.0.0.0</netmask>
+      <addr_type operation="pattern match" var_ref="oval:org.mitre.oval.test:var:84" var_check="all"/>
+    </interface_state>
+    <interface_state id="oval:org.mitre.oval.test:ste:890" version="1" comment="This state represents an interface with a name that matches the regular expression '.*', an index greater than or equal to '0', a type that matches the regular expressionnot '.*', a MAC address that matches the regular expression '.*', an IP address that matches the regular expression '.*', a broadcast address that matches the regular expression '.*', a subnet mask that matches the regular expression '.*', and an address type that matches the regular expression '.*'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <name operation="pattern match" var_ref="oval:org.mitre.oval.test:var:84" var_check="all"/>
+      <index datatype="int" operation="greater than or equal">0</index>
+      <type operation="pattern match" var_ref="oval:org.mitre.oval.test:var:84" var_check="all"/>
+      <hardware_addr operation="pattern match" var_ref="oval:org.mitre.oval.test:var:84" var_check="all"/>
+      <inet_addr operation="pattern match" var_ref="oval:org.mitre.oval.test:var:84" var_check="all"/>
+      <broadcast_addr operation="pattern match" var_ref="oval:org.mitre.oval.test:var:84" var_check="all"/>
+      <netmask operation="pattern match" var_ref="oval:org.mitre.oval.test:var:84" var_check="all"/>
+      <addr_type operation="pattern match" var_ref="oval:org.mitre.oval.test:var:84" var_check="all"/>
+    </interface_state>
+  </states>
+  <variables>
+    <constant_variable id="oval:org.mitre.oval.test:var:84" version="1" comment="This variable utilizes the work-around to use the pattern match operation on an enumeration. This variable is referenced in the state 'oval:org.mitre.oval.test:ste:357', 'oval:org.mitre.oval.test:ste:890'" datatype="string">
+      <value>.*</value>
+    </constant_variable>
+  </variables>
+</oval_definitions>

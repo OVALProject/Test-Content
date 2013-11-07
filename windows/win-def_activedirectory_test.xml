@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oval_definitions xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd     http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:win-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+  <generator>
+    <oval:schema_version>5.10.1</oval:schema_version>
+    <oval:timestamp>2009-01-12T10:41:00-05:00</oval:timestamp>
+    <terms_of_use>Copyright (c) 2002-2013, The MITRE Corporation. All rights reserved. The contents of this file are subject to the license described in terms.txt.</terms_of_use>
+  </generator>
+  <definitions>
+    <definition id="oval:org.mitre.oval.test:def:691" version="1" class="miscellaneous">
+      <metadata>
+        <title>Evaluate to true if the win-def:activedirectory_test probe is properly supported</title>
+        <description>This definition is intended to evalutate to true if the interpreter properly supports the win-def:activedirectory_test probe.</description>
+      </metadata>
+      <notes>
+        <note>It is important to note that the values used in this test definition are specific to a particular machine, and may not necessarily apply to your system. As a result, in order to have the definition return a result of 'true', you must either change these values to the ones found on your particular system, or you must configure your system to use these values.</note>
+        <note>Information regarding the active directory on your particular machine can be found by navigating to Start->Run... and type 'ldp'.</note>
+      </notes>
+      <criteria operator="AND">
+        <criterion comment="Test that an activedirectory_object with only a naming_context is supported." test_ref="oval:org.mitre.oval.test:tst:1331"/>
+        <criterion comment="Test that an activedirectory_object with a naming_context and a relative_dn is supported." test_ref="oval:org.mitre.oval.test:tst:1111"/>
+        <criterion comment="Test that an activedirectory_object with a naming_context and a relative_dn and attribute is supported." test_ref="oval:org.mitre.oval.test:tst:1118"/>
+        <criterion comment="Test that an activedirectory_object with a naming_context and a relative_dn where a pattern match is used and attribute is supported." test_ref="oval:org.mitre.oval.test:tst:620"/>
+        <criterion comment="Test that an activedirectory_object with a naming_context and a relative_dn and attribute pattern match is used is supported." test_ref="oval:org.mitre.oval.test:tst:399"/>
+      </criteria>
+    </definition>
+  </definitions>
+  <tests>
+    <activedirectory_test id="oval:org.mitre.oval.test:tst:1331" version="1" comment="Test that an activedirectory_object with only a naming_context is supported." check_existence="at_least_one_exists" check="at least one" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:902"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:524"/>
+    </activedirectory_test>
+    <activedirectory_test id="oval:org.mitre.oval.test:tst:1111" version="1" comment="Test that an activedirectory_object with a naming_context and a relative_dn is supported." check_existence="at_least_one_exists" check="at least one" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:244"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:1100"/>
+    </activedirectory_test>
+    <activedirectory_test id="oval:org.mitre.oval.test:tst:1118" version="1" comment="Test that an activedirectory_object with a naming_context and a relative_dn and attribute is supported." check_existence="at_least_one_exists" check="at least one" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:930"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:198"/>
+    </activedirectory_test>
+    <activedirectory_test id="oval:org.mitre.oval.test:tst:620" version="1" comment="Test that an activedirectory_object with a naming_context and a relative_dn where a pattern match is used and attribute is supported." check_existence="at_least_one_exists" check="at least one" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:556"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:1063"/>
+    </activedirectory_test>
+    <activedirectory_test id="oval:org.mitre.oval.test:tst:399" version="1" comment="Test that an activedirectory_object with a naming_context and a relative_dn and attribute pattern match is used is supported." check_existence="at_least_one_exists" check="at least one" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:135"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:274"/>
+    </activedirectory_test>
+  </tests>
+  <objects>
+    <activedirectory_object id="oval:org.mitre.oval.test:obj:902" version="1" comment="Retrieve the active directory object with the naming_context equal to 'domain'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <naming_context>domain</naming_context>
+      <relative_dn xsi:nil="true"/>
+      <attribute xsi:nil="true"/>
+    </activedirectory_object>
+    <activedirectory_object id="oval:org.mitre.oval.test:obj:244" version="1" comment="Retrieve the active directory object with the naming_context equal to 'domain' and the relative_dn equal to 'CN=HRDept,CN=Users'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <naming_context>domain</naming_context>
+      <relative_dn>CN=HRDept,CN=Users</relative_dn>
+      <attribute xsi:nil="true"/>
+    </activedirectory_object>
+    <activedirectory_object id="oval:org.mitre.oval.test:obj:930" version="1" comment="Retrieve the active directory object with the naming context equal to 'domain', the relative distinguished name equal to 'CN=HRDept,CN=Users', and the attribute equal to 'description'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <naming_context>domain</naming_context>
+      <relative_dn>CN=HRDept,CN=Users</relative_dn>
+      <attribute>description</attribute>
+    </activedirectory_object>
+    <activedirectory_object id="oval:org.mitre.oval.test:obj:556" version="1" comment="Retrieve active directory objects with the naming context equal to 'domain', the relative distinguished name matches the regular expression 'CN=HR[a-zA-Z]*,CN=Users', and the attribute equals 'description'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <naming_context>domain</naming_context>
+      <relative_dn operation="pattern match">CN=HR[a-zA-Z]*,CN=Users</relative_dn>
+      <attribute>description</attribute>
+    </activedirectory_object>
+    <activedirectory_object id="oval:org.mitre.oval.test:obj:135" version="1" comment="Retrieve active directory objects with the naming context 'domain', the relative distinguished name 'CN=HRDept,CN=Users', and an attribaute that matches the regular expression 'descrip.*'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <naming_context>domain</naming_context>
+      <relative_dn>CN=HRDept,CN=Users</relative_dn>
+      <attribute operation="pattern match">descrip.*</attribute>
+    </activedirectory_object>
+  </objects>
+  <states>
+    <activedirectory_state id="oval:org.mitre.oval.test:ste:524" version="1" comment="This state represents an Active Directory object that has a naming context of 'domain'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <naming_context>domain</naming_context>
+    </activedirectory_state>
+    <activedirectory_state id="oval:org.mitre.oval.test:ste:1100" version="1" comment="This state represents an Active Directory object that has a naming context of 'domain' and a relative_dn of 'CN=HRDept,CN=Users'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <naming_context>domain</naming_context>
+      <relative_dn>CN=HRDept,CN=Users</relative_dn>
+    </activedirectory_state>
+    <activedirectory_state id="oval:org.mitre.oval.test:ste:198" version="1" comment="This state represents an Active Directory object that has a naming context of 'domain', a relative distinguished name of 'CN=HRDept,CN=Users', an attribute 'description', an object class of 'top;group;', an ads type of 'ADSTYPE_CASE_IGNORE_STRING', and a value of 'HRDept Employees'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <naming_context>domain</naming_context>
+      <relative_dn>CN=HRDept,CN=Users</relative_dn>
+      <attribute>description</attribute>
+      <object_class>top;group;</object_class>
+      <adstype>ADSTYPE_CASE_IGNORE_STRING</adstype>
+      <value>HRDept Employees</value>
+    </activedirectory_state>
+    <activedirectory_state id="oval:org.mitre.oval.test:ste:1063" version="1" comment="This state represents an Active Directory object that has a naming context of 'domain', a relative distinguished name that matches the regular expression '.*', an attribute of 'description', an object class of 'top;group;', an ads type of 'ADSTYPE_CASE_IGNORE_STRING', and a value that matches the regular expression '.*'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <naming_context>domain</naming_context>
+      <relative_dn operation="pattern match">.*</relative_dn>
+      <attribute>description</attribute>
+      <object_class>top;group;</object_class>
+      <adstype>ADSTYPE_CASE_IGNORE_STRING</adstype>
+      <value operation="pattern match">.*</value>
+    </activedirectory_state>
+    <activedirectory_state id="oval:org.mitre.oval.test:ste:274" version="1" comment="This state represents an Active Directory object that has a naming context of 'domain', a relative distinguished name of 'CN=HRDept,CN=Users', an attribute that matches the regular expression '.*', an object class of 'top;group;', an ads type of 'ADSTYPE_CASE_IGNORE_STRING', and a value of 'HRDept Employees'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <naming_context>domain</naming_context>
+      <relative_dn>CN=HRDept,CN=Users</relative_dn>
+      <attribute operation="pattern match">.*</attribute>
+      <object_class>top;group;</object_class>
+      <adstype>ADSTYPE_CASE_IGNORE_STRING</adstype>
+      <value>HRDept Employees</value>
+    </activedirectory_state>
+  </states>
+</oval_definitions>

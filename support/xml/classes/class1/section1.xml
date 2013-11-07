@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2002-2013, The MITRE Corporation. All rights reserved. The contents of this file are subject to the license described in terms.txt. -->
+<students>
+    <student status="full-time">
+        <name>Bill</name>
+        <id>21364127</id>
+        <grades>
+            <grade type="test">83</grade>
+            <grade type="quiz">90</grade>
+            <grade type="homework">100</grade>
+            <grade type="test">87</grade>
+        </grades>
+    </student>
+    <student status="part-time">>
+        <name>Jen</name>
+        <id>76545123</id>
+        <status full-time="false"/>
+        <grades>
+            <grade type="test">93</grade>
+            <grade type="quiz">70</grade>
+            <grade type="homework">85</grade>
+            <grade type="test">86</grade>
+        </grades>
+    </student>
+    <student status="part-time">
+        <name>John</name>
+        <id>98090124</id>
+        <status full-time="false"/>
+        <grades>
+            <grade type="test">100</grade>
+            <grade type="quiz">87</grade>
+            <grade type="homework">62</grade>
+            <grade type="test">76</grade>
+        </grades>
+    </student>
+    <student status="full-time">
+        <name>Kate</name>
+        <id>43258933</id>
+        <grades>
+            <grade type="test">53</grade>
+            <grade type="quiz">90</grade>
+            <grade type="homework">92</grade>
+            <grade type="test">97</grade>
+        </grades>
+    </student>
+</students>

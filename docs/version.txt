@@ -1,0 +1,89 @@
+*********************************************************************
+
+OVAL Test Content
+
+Copyright (c) 2002-2013, The MITRE Corporation
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are
+permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, this list
+      of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, this 
+      list of conditions and the following disclaimer in the documentation and/or other
+      materials provided with the distribution.
+    * Neither the name of The MITRE Corporation nor the names of its contributors may be
+      used to endorse or promote products derived from this software without specific 
+      prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY 
+EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT 
+SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
+TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+*********************************************************************
+
+This document contains a log of all changes made to the OVAL Test Content since Version 5.9.1 was released.
+
+---------------------------------------
+---        Version 5.10.1 build 3   ---
+---------------------------------------
+
+* Updated evr_string values to explicitly follow the EPOCH:VERSION-RELEASE format.
+* Implemented feature request #3570530: update rpmverify*_test content to support FC17+.
+* Fixed bug #3448310: solaris patch tst:1981 incorrectly references ste:1298.
+* Fixed bug #3448288: remove unix-def:runlevel_test content for macos.
+* Fixed bug #3448321: solaris file test tst:1879 references the wrong state.
+* Fixed bug #3525114: oval:org.mitre.oval.test:def:219 is duplicated in Windows content.
+* Fixed bug #3438322: remove the signature_keyid entity from the rpminfo_test.
+* Fixed bug #3433695: file_test content has an object and state that do not align.
+* Fixed bug #3433692: process tests dont use full path for command entity on mac.
+* Added content for the windows_view behavior in the win-def:file_test and the win-def:registry_test content.
+* Added ind-def:environmentvariable58_test content for Windows and Linux.
+* Changed "path" object entity operations to "case insensitive equals" because the Windows directory was "C:\Windows" but the test had "C:\WINDOWS" in the ind-def:filehash58_test content.
+* Fixed capitalization errors that were causing tests to fail in the MacOS and Linux ind-def:xmlfilecontent_test content.
+
+---------------------------------------
+---        Version 5.10.1 build 2   ---
+---------------------------------------
+
+* Fixed some objects and states to use the proper case for path names in the Solaris ind-def:xmlfilecontent_test content.  They weren't matching the support data they were intended to operate on.
+* Fixed all the xml test files to not have an extra top-level terms_of_use element, which is not legal xml.
+* Changed path and filename operations in the ind-def:filehash58_test content for Windows to be case insensitive.
+
+---------------------------------------
+---        Version 5.9 build 2      ---
+---------------------------------------
+
+* Changed the datatype of the chg_allow and exp_warn entities from "string" to "int" to resolve validation errors in the unix-def_shadow_test.xml files. 
+* Added platform specific OVAL Variables Documents to align with the OVAL Variable identifiers in each of the oval-def_external_variable.xml files. 
+* Changed the linux-def_selinuxboolean_test.xml file so that it specified the var_ref property instead of the entity_check property. 
+* Added "independent-definitions-schema" to the schemaLocation attribute of the oval_definitions element to resolve validation errors. 
+* Changed the datatypes and operations of the local_port object and state entities in the linux-def_inetlisteningservers_test.xml file to resolve validation errors. 
+* Changed the datatypes and operations of the local_port state entities in the macos-def_inetlisteningservers_test.xml file to resolve validation errors. 
+* Updated the oval-def_split_function.xml files so that they now utilize the ability to specify the empty string value in a constant_variable. 
+* Added ind-def_textfilecontent_test.xml to the Windows content. 
+* Added oval_check_enumeration_object_state.xml to the Windows content. 
+* Added win-def_fileauditedpermissions_test.xml to the Windows content. 
+* Added win-def:fileeffectiverights_test.xml to the Windows content. 
+* Added win-def:process58_test.xml to the Windows content. 
+* Added win-def_regkeyauditedpermissions53_test.xml to the Windows content. 
+* Added win-def_regkeyauditedpermissions_test.xml to the Windows content. 
+* Added win-def_regkeyeffectiverights_test.xml to the Windows content. 
+* Added win-def_wmi57_object_test.xml to the Windows content. 
+* Commented out the test case that uses the 'not equal' operation in win-def_file_test.xml because it takes a very long time to complete. 
+* Removed trailing path separators from all content. 
+* Updated win-def_user_sid55_test.xml so that it no longer checks for the system account (S-1-5-18). 
+* Changed the datatypes and operations on the state entities in linux-def_dpkginfo_test.xml to resolve validation errors. 
+
+---------------------------------------
+---        Version 5.9 build 1      ---
+---------------------------------------
+
+* Initial draft of the OVAL Test Content for Version 5.9 of OVAL.

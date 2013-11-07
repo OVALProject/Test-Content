@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<oval_definitions xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#macos macos-definitions-schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5">
+  <generator>
+    <oval:schema_version>5.10.1</oval:schema_version>
+    <oval:timestamp>2010-12-05T10:41:00-05:00</oval:timestamp>
+    <terms_of_use>Copyright (c) 2002-2013, The MITRE Corporation. All rights reserved. The contents of this file are subject to the license described in terms.txt.</terms_of_use>
+  </generator>
+  <definitions>
+    <definition id="oval:org.mitre.oval.test:def:471" version="1" class="miscellaneous">
+      <metadata>
+        <title>Evaluate to true if the macos-def:accountinfo_test is properly supported</title>
+        <description>This definition is intended to evalutate to true if the interpreter properly supports the macos-def:accountinfo_test.</description>
+      </metadata>
+      <notes>
+        <note>It is important to note that the values used in this test definition are specific to a particular machine, and may not necessarily apply to your system. As a result, in order to have the definition return a result of 'true', you must either change these values to the ones found on your particular system, or you must configure your system to use these values.</note>
+      </notes>
+      <criteria operator="AND">
+        <criterion comment="Test that the accountinfo_object is supported with the username entity equal to some value." test_ref="oval:org.mitre.oval.test:tst:618"/>
+        <criterion comment="Test that the accountinfo_object is supported with the username entity not equal to some value." test_ref="oval:org.mitre.oval.test:tst:473"/>
+        <criterion comment="Test that the accountinfo_object is supported with the username entity matching some regular expression." test_ref="oval:org.mitre.oval.test:tst:186"/>
+      </criteria>
+    </definition>
+  </definitions>
+  <tests>
+    <accountinfo_test id="oval:org.mitre.oval.test:tst:618" version="1" comment="Test that the accountinfo_object is supported with the username entity equal to some value." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <object object_ref="oval:org.mitre.oval.test:obj:260"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:840"/>
+    </accountinfo_test>
+    <accountinfo_test id="oval:org.mitre.oval.test:tst:473" version="1" comment="Test that the accountinfo_object is supported with the username entity not equal to some value." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <object object_ref="oval:org.mitre.oval.test:obj:219"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:715"/>
+    </accountinfo_test>
+    <accountinfo_test id="oval:org.mitre.oval.test:tst:186" version="1" comment="Test that the accountinfo_object is supported with the username entity matching some regular expression." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <object object_ref="oval:org.mitre.oval.test:obj:613"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:940"/>
+    </accountinfo_test>
+  </tests>
+  <objects>
+    <accountinfo_object id="oval:org.mitre.oval.test:obj:260" version="1" comment="This object represents a accountinfo_object with the username equal to 'root'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <username>root</username>
+    </accountinfo_object>
+    <accountinfo_object id="oval:org.mitre.oval.test:obj:219" version="1" comment="This object represents a accountinfo_object with the username not equal to 'Admin'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <username operation="not equal">root</username>
+    </accountinfo_object>
+    <accountinfo_object id="oval:org.mitre.oval.test:obj:613" version="1" comment="This object represents a accountinfo_object with the username matching the regular expression '^ro.t$'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <username operation="pattern match">^ro.t$</username>
+    </accountinfo_object>
+  </objects>
+  <states>
+    <accountinfo_state id="oval:org.mitre.oval.test:ste:840" version="1" comment="This accountinfo_state represents an accountinfo_item which has a username equal to 'root', a uid equal to '0', and a gid equal to '0'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <username>root</username>
+      <uid datatype="int">0</uid>
+      <gid datatype="int">0</gid>
+    </accountinfo_state>
+    <accountinfo_state id="oval:org.mitre.oval.test:ste:715" version="1" comment="This accountinfo_state represents accountinfo_items which have a username not equal to 'root', a uid greater than or equal to '0', and a gid greater than or equal to '0'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <username operation="not equal">root</username>
+      <uid datatype="int" operation="greater than or equal">0</uid>
+      <gid datatype="int" operation="greater than or equal">0</gid>
+    </accountinfo_state>
+    <accountinfo_state id="oval:org.mitre.oval.test:ste:940" version="1" comment="This accountinfo_state represents accountinfo_items which have a username that matches the regular expression '^ro.t$', a uid equal to '0', a gid equal to '0', and a login_shell that matches the regular expression '.*'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <username operation="pattern match">^ro.t$</username>
+      <uid datatype="int">0</uid>
+      <gid datatype="int">0</gid>
+      <login_shell operation="pattern match">.*</login_shell>
+    </accountinfo_state>
+  </states>
+</oval_definitions>

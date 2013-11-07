@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oval_definitions xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd      http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd     http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:win-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+  <generator>
+    <oval:schema_version>5.10.1</oval:schema_version>
+    <oval:timestamp>2009-01-12T10:41:00-05:00</oval:timestamp>
+    <terms_of_use>Copyright (c) 2002-2013, The MITRE Corporation. All rights reserved. The contents of this file are subject to the license described in terms.txt.</terms_of_use>
+  </generator>
+  <definitions>
+    <definition id="oval:org.mitre.oval.test:def:116" version="1" class="miscellaneous">
+      <metadata>
+        <title>Evaluate to true if the win-def:volume_test probe is properly supported</title>
+        <description>This definition is intended to evalutate to true if the interpreter properly supports the win-def:volume_test probe.</description>
+      </metadata>
+      <notes>
+        <note>It is important to note that the values used in this test definition are specific to a particular machine, and may not necessarily apply to your system. As a result, in order to have the definition return a result of 'true', you must either change these values to the ones found on your particular system, or you must configure your system to use these values.</note>
+        <note>Information regarding the volumes on your particular machine can be found by navigating to Start -> Settings -> Control Panel -> Administrative Tools -> Computer Management -> Storage -> Disk Management.</note>
+      </notes>
+      <criteria operator="AND">
+        <criterion comment="Test that a volume_object with a rootpath is supported." test_ref="oval:org.mitre.oval.test:tst:1102"/>
+        <criterion comment="Test that a volume_object with a rootpath pattern match is supported." test_ref="oval:org.mitre.oval.test:tst:1221"/>
+        <criterion comment="Test that a volume_object with a rootpath not equals is supported." test_ref="oval:org.mitre.oval.test:tst:1286"/>
+      </criteria>
+    </definition>
+  </definitions>
+  <tests>
+    <volume_test id="oval:org.mitre.oval.test:tst:1102" version="1" comment="Test that a volume_object with a rootpath is supported." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:188"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:1268"/>
+    </volume_test>
+    <volume_test id="oval:org.mitre.oval.test:tst:1221" version="1" comment="Test that a volume_object with a rootpath pattern match is supported." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:375"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:1126"/>
+    </volume_test>
+    <volume_test id="oval:org.mitre.oval.test:tst:1286" version="1" comment="Test that a volume_object with a rootpath not equals is supported." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:341"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:1126"/>
+    </volume_test>
+  </tests>
+  <objects>
+    <volume_object id="oval:org.mitre.oval.test:obj:188" version="1" comment="Retrieve volume_objects with a rootpath value equal to 'C:\'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <rootpath>C:\</rootpath>
+    </volume_object>
+    <volume_object id="oval:org.mitre.oval.test:obj:375" version="1" comment="Retrieve volume_objects with a rootpath value that match the regular expression '.*'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <rootpath operation="pattern match">.*</rootpath>
+    </volume_object>
+    <volume_object id="oval:org.mitre.oval.test:obj:341" version="1" comment="Retrieve volume_objects with a rootpath value that is not equal to 'C:\'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <rootpath operation="not equal">C:\</rootpath>
+    </volume_object>
+  </objects>
+  <states>
+    <volume_state id="oval:org.mitre.oval.test:ste:1268" version="1" comment="This state represents a volume with a rootpath equal to 'C:\', a file_system that matches the regular expression '.*', a name that matches the regular expression '.*', a volume_max_component_length that is greater than or equal to '0', and a serial_number that is greater than or equal to '0'.  The entities with boolean values have been commented so that the test will return 'true' if this volume exists on this system.  However, the values for this state should be set to make sure that the interpreter can handle boolean entities in the state. The values for these entities can be found in the system-characterstics file in the item with the rootpath 'C:\'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <rootpath>C:\</rootpath>
+      <file_system operation="pattern match">.*</file_system>
+      <name operation="pattern match">.*</name>
+      <volume_max_component_length datatype="int" operation="greater than or equal">0</volume_max_component_length>
+      <serial_number datatype="int" operation="greater than or equal">0</serial_number>
+    </volume_state>
+    <volume_state id="oval:org.mitre.oval.test:ste:1126" version="1" comment="This state represents a volume with a rootpath that matches the regular expression '.*', a file_system that matches the regular expression '.*', a name that matches the regular expression '.*', a volume_max_component_length that is greater than or equal to '0', and a serial_number that is greater than or equal to '0'.  The entities with boolean values have been left out of this state so that the test will return true if any volumes, that have the following values, exists on this system." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <rootpath operation="pattern match">.*</rootpath>
+      <file_system operation="pattern match">.*</file_system>
+      <name operation="pattern match">.*</name>
+      <volume_max_component_length datatype="int" operation="greater than or equal">0</volume_max_component_length>
+      <serial_number datatype="int" operation="greater than or equal">0</serial_number>
+    </volume_state>
+  </states>
+</oval_definitions>

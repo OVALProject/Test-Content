@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oval_definitions xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd      http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd     http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:win-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+  <generator>
+    <oval:schema_version>5.10.1</oval:schema_version>
+    <oval:timestamp>2009-01-12T10:41:00-05:00</oval:timestamp>
+    <terms_of_use>Copyright (c) 2002-2013, The MITRE Corporation. All rights reserved. The contents of this file are subject to the license described in terms.txt.</terms_of_use>
+  </generator>
+  <definitions>
+    <definition id="oval:org.mitre.oval.test:def:21" version="1" class="miscellaneous">
+      <metadata>
+        <title>Evaluate to true if the win-def:process_test probe is properly supported</title>
+        <description>This definition is intended to evalutate to true if the interpreter properly supports the win-def:process_test probe.</description>
+      </metadata>
+      <notes>
+        <note>It is important to note that the values used in this test definition are specific to a particular machine, and may not necessarily apply to your system. As a result, in order to have the definition return a result of 'true', you must either change these values to the ones found on your particular system, or you must configure your system to use these values.</note>
+        <note>Information regarding the processes on your particular machine can be found by navigating to Start->Run... and by typing 'cmd'. Once a command prompt termial is open simply type 'WMIC PATH Win32_Process GET CommandLine , ProcessId , ParentProcessId , Priority , Name , ExecutablePath > Win32_ProcessOutput.txt'. The results of this query will be available in the text file 'Win32_ProcessOutput.txt' in the working directory of where the query was issued.</note>
+        <note>Also, when entering a value for the command_line entity be sure to include quotes if they are contained in some part of the value.</note>
+      </notes>
+      <criteria operator="AND">
+        <criterion comment="Test that a process_object with a command_line is supported." test_ref="oval:org.mitre.oval.test:tst:1135"/>
+        <criterion comment="Test that a process_object with a command_line pattern match is supported." test_ref="oval:org.mitre.oval.test:tst:1114"/>
+        <criterion comment="Test that a process_object with a command_line not equals is supported." test_ref="oval:org.mitre.oval.test:tst:1278"/>
+      </criteria>
+    </definition>
+  </definitions>
+  <tests>
+    <process_test id="oval:org.mitre.oval.test:tst:1135" version="1" comment="Test that a process_object with a command_line is supported." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:292"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:1236"/>
+    </process_test>
+    <process_test id="oval:org.mitre.oval.test:tst:1114" version="1" comment="Test that a process_object with a command_line pattern match is supported." check_existence="at_least_one_exists" check="at least one" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:939"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:1222"/>
+    </process_test>
+    <process_test id="oval:org.mitre.oval.test:tst:1278" version="1" comment="Test that a process_object with a command_line not equals is supported." check_existence="at_least_one_exists" check="at least one" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:903"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:1222"/>
+    </process_test>
+  </tests>
+  <objects>
+    <process_object id="oval:org.mitre.oval.test:obj:292" version="1" comment="Retrieve process_objects with a command_line value that is equal to 'winlogon.exe'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <command_line>winlogon.exe</command_line>
+    </process_object>
+    <process_object id="oval:org.mitre.oval.test:obj:939" version="1" comment="Retrieve process_objects with a command_line value that matches the regular expression '.*'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <command_line operation="pattern match">.*</command_line>
+    </process_object>
+    <process_object id="oval:org.mitre.oval.test:obj:903" version="1" comment="Retrieve process_objects with a command_line value that is not equal to 'winlogon.exe'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <command_line operation="not equal">winlogon.exe</command_line>
+    </process_object>
+  </objects>
+  <states>
+    <process_state id="oval:org.mitre.oval.test:ste:1236" version="1" comment="This state represents a process with a command_line value equal to 'winlogon.exe', has a pid greater than or equal to '0', a ppid greater than or equal to '0', a priority that matches the regular expression '.*', a image_path equal to 'winlogon.exe', and a current_dir that matches the regular expression '.*'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <command_line>winlogon.exe</command_line>
+      <pid datatype="int" operation="greater than or equal">0</pid>
+      <ppid datatype="int" operation="greater than or equal">0</ppid>
+      <priority operation="pattern match">.*</priority>
+      <image_path>winlogon.exe</image_path>
+      <current_dir operation="pattern match">.*</current_dir>
+    </process_state>
+    <process_state id="oval:org.mitre.oval.test:ste:1222" version="1" comment="This state represents a process with a command_line that matches the regular expression '.*', has a pid greater than or equal to '0', a ppid greater than or equal to '0', a priority that matches the regular expression '.*', a image_path that matches the regular expression '.*', and a current_dir that matches the regular expression '.*'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <command_line operation="pattern match">.*</command_line>
+      <pid datatype="int" operation="greater than or equal">0</pid>
+      <ppid datatype="int" operation="greater than or equal">0</ppid>
+      <priority operation="pattern match">.*</priority>
+      <image_path operation="pattern match">.*</image_path>
+      <current_dir operation="pattern match">.*</current_dir>
+    </process_state>
+  </states>
+</oval_definitions>

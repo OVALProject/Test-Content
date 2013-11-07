@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<oval_definitions xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:unix-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+  <generator>
+    <oval:schema_version>5.10.1</oval:schema_version>
+    <oval:timestamp>2009-07-22T17:27:52-05:00</oval:timestamp>
+    <terms_of_use>Copyright (c) 2002-2013, The MITRE Corporation. All rights reserved. The contents of this file are subject to the license described in terms.txt.</terms_of_use>
+  </generator>
+  <definitions>
+    <definition id="oval:org.mitre.oval.test:def:653" version="1" class="miscellaneous">
+      <metadata>
+        <title>Evaluate to true if unix-def:interface_test is properly supported</title>
+        <description>This definition is intended to evaluate to true if the interpreter properly supports unix-def:interface_test.</description>
+      </metadata>
+      <notes>
+        <note>It is important to note that the values used in this test definition are specific to a particular machine, and may not necessarily apply to your system. As a result, in order to have the definition return a result of 'true', you must either change these values to the ones found on your particular system, or you must configure your system to use these values.</note>
+        <note>Information regarding the interfaces on your particular machine can be found by running the 'ifconfig' utility.</note>
+      </notes>
+      <criteria operator="AND">
+        <criterion comment="Test that the interface_object is supported with the name entity equal to some value." test_ref="oval:org.mitre.oval.test:tst:637"/>
+        <criterion comment="Test that the interface_object is supported with the name entity not equal to some value." test_ref="oval:org.mitre.oval.test:tst:947"/>
+        <criterion comment="Test that the interface_object is supported with the name entity matching some regular expression." test_ref="oval:org.mitre.oval.test:tst:989"/>
+        <criterion comment="Test that the interface_object is supported with the name entity equal to some value using the var_ref attribute." test_ref="oval:org.mitre.oval.test:tst:535"/>
+        <criterion comment="Test that the interface_object is supported with the name entity not equal to some value using the var_ref attribute." test_ref="oval:org.mitre.oval.test:tst:33"/>
+        <criterion comment="Test that the interface_object is supported with the name entity matching some regular expression using the var_ref attribute." test_ref="oval:org.mitre.oval.test:tst:1003"/>
+      </criteria>
+    </definition>
+  </definitions>
+  <tests>
+    <interface_test id="oval:org.mitre.oval.test:tst:637" version="1" comment="Test that the interface_object is supported with the name entity equal to some value." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <object object_ref="oval:org.mitre.oval.test:obj:500"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:4"/>
+    </interface_test>
+    <interface_test id="oval:org.mitre.oval.test:tst:947" version="1" comment="Test that the interface_object is supported with the name entity not equal to some value." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <object object_ref="oval:org.mitre.oval.test:obj:143"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:4"/>
+    </interface_test>
+    <interface_test id="oval:org.mitre.oval.test:tst:989" version="1" comment="Test that the interface_object is supported with the name entity matching some regular expression." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <object object_ref="oval:org.mitre.oval.test:obj:767"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:153"/>
+    </interface_test>
+    <interface_test id="oval:org.mitre.oval.test:tst:535" version="1" comment="Test that the interface_object is supported with the name entity equal to some value using the var_ref attribute." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <object object_ref="oval:org.mitre.oval.test:obj:584"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:4"/>
+    </interface_test>
+    <interface_test id="oval:org.mitre.oval.test:tst:33" version="1" comment="Test that the interface_object is supported with the name entity not equal to some value using the var_ref attribute." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <object object_ref="oval:org.mitre.oval.test:obj:508"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:153"/>
+    </interface_test>
+    <interface_test id="oval:org.mitre.oval.test:tst:1003" version="1" comment="Test that the interface_object is supported with the name entity matching some regular expression using the var_ref attribute." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <object object_ref="oval:org.mitre.oval.test:obj:29"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:412"/>
+    </interface_test>
+  </tests>
+  <objects>
+    <interface_object id="oval:org.mitre.oval.test:obj:500" version="1" comment="This object represents an interface_object where the name equals 'lo0'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <name>lo0</name>
+    </interface_object>
+    <interface_object id="oval:org.mitre.oval.test:obj:143" version="1" comment="This object represents an interface_object where the name is not equal to 'en1'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <name operation="not equal">en1</name>
+    </interface_object>
+    <interface_object id="oval:org.mitre.oval.test:obj:767" version="1" comment="This object represents an interface_object where the name matches the regular expression '^(?!lo0)'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <name operation="pattern match">^(?!lo0)</name>
+    </interface_object>
+    <interface_object id="oval:org.mitre.oval.test:obj:584" version="1" comment="This object represents an interface_object where the name equals 'lo0' using the var_ref attribute." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <name var_ref="oval:org.mitre.oval.test:var:544" var_check="all"/>
+    </interface_object>
+    <interface_object id="oval:org.mitre.oval.test:obj:508" version="1" comment="This object represents an interface_object where the name is not equal to 'lo0' using the var_ref attribute." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <name operation="not equal" var_ref="oval:org.mitre.oval.test:var:544" var_check="all"/>
+    </interface_object>
+    <interface_object id="oval:org.mitre.oval.test:obj:29" version="1" comment="This object represents an interface_object where the name matches the regular expression '^e.+1$' using the var_ref attribute." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <name operation="pattern match" var_ref="oval:org.mitre.oval.test:var:509" var_check="all"/>
+    </interface_object>
+  </objects>
+  <states>
+    <interface_state id="oval:org.mitre.oval.test:ste:4" version="1" comment="This interface_state represents an interface_object where the inet_addr equals '127.0.0.1'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <inet_addr>127.0.0.1</inet_addr>
+    </interface_state>
+    <interface_state id="oval:org.mitre.oval.test:ste:153" version="1" comment="This interface_state represents an interface_object where the name equals 'en1'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <name>en1</name>
+    </interface_state>
+    <interface_state id="oval:org.mitre.oval.test:ste:412" version="1" comment="This interface_state represents an interface_object where the flag equals 'UP'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <flag entity_check="at least one">UP</flag>
+    </interface_state>
+  </states>
+  <variables>
+    <constant_variable id="oval:org.mitre.oval.test:var:544" version="1" comment="This constant_variable represents the string value 'lo0'." datatype="string">
+      <value>lo0</value>
+    </constant_variable>
+    <constant_variable id="oval:org.mitre.oval.test:var:509" version="1" comment="This constant_variable represents the string value '^e.+1$'." datatype="string">
+      <value>^e.+1$</value>
+    </constant_variable>
+  </variables>
+</oval_definitions>

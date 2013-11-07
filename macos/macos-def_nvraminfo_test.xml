@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<oval_definitions xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#macos macos-definitions-schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5">
+  <generator>
+    <oval:schema_version>5.10.1</oval:schema_version>
+    <oval:timestamp>2010-12-05T10:41:00-05:00</oval:timestamp>
+    <terms_of_use>Copyright (c) 2002-2013, The MITRE Corporation. All rights reserved. The contents of this file are subject to the license described in terms.txt.</terms_of_use>
+  </generator>
+  <definitions>
+    <definition id="oval:org.mitre.oval.test:def:448" version="1" class="miscellaneous">
+      <metadata>
+        <title>Evaluate to true if the macos-def:nvram_test is properly supported</title>
+        <description>This definition is intended to evalutate to true if the interpreter properly supports the macos-def:nvram_test.</description>
+      </metadata>
+      <notes>
+        <note>It is important to note that the values used in this test definition are specific to a particular machine, and may not necessarily apply to your system. As a result, in order to have the definition return a result of 'true', you must either change these values to the ones found on your particular system, or you must configure your system to use these values.</note>
+      </notes>
+      <criteria operator="AND">
+        <criterion comment="Test that the nvram_object is supported with the nvram_var entity equal to some value." test_ref="oval:org.mitre.oval.test:tst:865"/>
+        <criterion comment="Test that the nvram_object is supported with the nvram_var entity not equal to some value." test_ref="oval:org.mitre.oval.test:tst:486"/>
+        <criterion comment="Test that the nvram_object is supported with the nvram_var entity matching some regular expression." test_ref="oval:org.mitre.oval.test:tst:308"/>
+      </criteria>
+    </definition>
+  </definitions>
+  <tests>
+    <nvram_test id="oval:org.mitre.oval.test:tst:865" version="1" comment="Test that the nvram_object is supported with the nvram_var entity equal to some value." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <object object_ref="oval:org.mitre.oval.test:obj:754"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:994"/>
+    </nvram_test>
+    <nvram_test id="oval:org.mitre.oval.test:tst:486" version="1" comment="Test that the nvram_object is supported with the nvram_var entity not equal to some value." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <object object_ref="oval:org.mitre.oval.test:obj:202"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:569"/>
+    </nvram_test>
+    <nvram_test id="oval:org.mitre.oval.test:tst:308" version="1" comment="Test that the nvram_object is supported with the nvram_var entity matching some regular expression." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <object object_ref="oval:org.mitre.oval.test:obj:588"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:943"/>
+    </nvram_test>
+  </tests>
+  <objects>
+    <nvram_object id="oval:org.mitre.oval.test:obj:754" version="1" comment="This object represents a nvram_object with the nvram variable name equal to 'SystemAudioVolume'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <nvram_var>SystemAudioVolume</nvram_var>
+    </nvram_object>
+    <nvram_object id="oval:org.mitre.oval.test:obj:202" version="1" comment="This object represents a nvram_object with the nvram variable name not equal to 'SystemAudioVolume'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <nvram_var operation="not equal">SystemAudioVolume</nvram_var>
+    </nvram_object>
+    <nvram_object id="oval:org.mitre.oval.test:obj:588" version="1" comment="This object represents a nvram_object with the nvram variable name matching the regular expression '^SystemAudio'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <nvram_var operation="pattern match">^SystemAudio</nvram_var>
+    </nvram_object>
+  </objects>
+  <states>
+    <nvram_state id="oval:org.mitre.oval.test:ste:994" version="1" comment="This nvram_state represents an nvram_item which has a nvram variable name equal to 'SystemAudioVolume' and a nvram value that matches the regular expression '.*'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <nvram_var>SystemAudioVolume</nvram_var>
+      <nvram_value operation="pattern match">.*</nvram_value>
+    </nvram_state>
+    <nvram_state id="oval:org.mitre.oval.test:ste:569" version="1" comment="This nvram_state represents nvram_items which have a nvram variable name not equal to 'SystemAudioVolume' and a nvram value that matches the regular expression '.*'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <nvram_var operation="not equal">SystemAudioVolume</nvram_var>
+      <nvram_value operation="pattern match">.*</nvram_value>
+    </nvram_state>
+    <nvram_state id="oval:org.mitre.oval.test:ste:943" version="1" comment="This nvram_state represents nvram_items which have a nvram variable name that matches the regular expression '^SystemAudio' and a nvram value that matches the regular expression '.*'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#macos">
+      <nvram_var operation="pattern match">^SystemAudio</nvram_var>
+      <nvram_value operation="pattern match">.*</nvram_value>
+    </nvram_state>
+  </states>
+</oval_definitions>

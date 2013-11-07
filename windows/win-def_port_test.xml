@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<oval_definitions xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd     http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:win-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+  <generator>
+    <oval:schema_version>5.10.1</oval:schema_version>
+    <oval:timestamp>2009-01-12T10:41:00-05:00</oval:timestamp>
+    <terms_of_use>Copyright (c) 2002-2013, The MITRE Corporation. All rights reserved. The contents of this file are subject to the license described in terms.txt.</terms_of_use>
+  </generator>
+  <definitions>
+    <definition id="oval:org.mitre.oval.test:def:949" version="1" class="miscellaneous">
+      <metadata>
+        <title>Evaluate to true if the win-def:port_test probe is properly supported</title>
+        <description>This definition is intended to evalutate to true if the interpreter properly supports the win-def:port_test probe.</description>
+      </metadata>
+      <notes>
+        <note>It is important to note that the values used in this test definition are specific to a particular machine, and may not necessarily apply to your system. As a result, in order to have the definition return a result of 'true', you must either change these values to the ones found on your particular system, or you must configure your system to use these values.</note>
+        <note>Information regarding the ports on your particular machine can be found by navigating to Start->Run... and by typing 'cmd'. Once a command prompt terminal is open simply type 'netstat -ano'.</note>
+      </notes>
+      <criteria operator="AND">
+        <criterion comment="Test that a port_object with a local_address, local_port, and protocol is supported." test_ref="oval:org.mitre.oval.test:tst:1412"/>
+        <criterion comment="Test that a port_object with a local_address, local_port, and protocol with a pattern match used is supported." test_ref="oval:org.mitre.oval.test:tst:1258"/>
+        <criterion comment="Test that a port_object with a local_address pattern match, local_port, and protocol is supported." test_ref="oval:org.mitre.oval.test:tst:1304"/>
+      </criteria>
+    </definition>
+  </definitions>
+  <tests>
+    <port_test id="oval:org.mitre.oval.test:tst:1412" version="1" comment="Test that a port_object with a local_address, local_port, and protocol is supported." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:465"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:773"/>
+    </port_test>
+    <port_test id="oval:org.mitre.oval.test:tst:1258" version="1" comment="Test that a port_object with a local_address, local_port, and protocol with a pattern match used is supported." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:1074"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:871"/>
+    </port_test>
+    <port_test id="oval:org.mitre.oval.test:tst:1304" version="1" comment="Test that a port_object with a local_address pattern match, local_port, and protocol is supported." check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval.test:obj:1034"/>
+      <state state_ref="oval:org.mitre.oval.test:ste:1060"/>
+    </port_test>
+  </tests>
+  <objects>
+    <port_object id="oval:org.mitre.oval.test:obj:465" version="1" comment="Retrieve the port object with the local_address equal to '0.0.0.0', the local_port equal to '135', and the protocol equal to 'TCP'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <local_address>0.0.0.0</local_address>
+      <local_port datatype="int">135</local_port>
+      <protocol>TCP</protocol>
+    </port_object>
+    <port_object id="oval:org.mitre.oval.test:obj:1074" version="1" comment="Retrieve the port objects with the local_address not equal to '127.0.0.1', the local_port less than or equal to '65535', and the protocol that matches the regular expression '^U[D]P$'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <local_address operation="not equal">127.0.0.1</local_address>
+      <local_port datatype="int" operation="less than or equal">65535</local_port>
+      <protocol operation="pattern match" var_ref="oval:org.mitre.oval.test:var:968" var_check="all"/>
+    </port_object>
+    <port_object id="oval:org.mitre.oval.test:obj:1034" version="1" comment="Retrieve the port objects with the local_address that matches the regular expression '([0-9])*\.([0-9])*\.([0-9])*\.([0-9])*', the local_port greater than or equal to '0', and the protocol not equal to 'UDP'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <local_address operation="pattern match">([0-9])*\.([0-9])*\.([0-9])*\.([0-9])*</local_address>
+      <local_port datatype="int" operation="greater than or equal">0</local_port>
+      <protocol operation="not equal">UDP</protocol>
+    </port_object>
+  </objects>
+  <states>
+    <port_state id="oval:org.mitre.oval.test:ste:773" version="1" comment="This state represents a port with a local address of '0.0.0.0', a local port '135' that when bitwise AND'd with the value '3' results in the value '3', a protocol equal to 'TCP', and a pid greater than or equal to '0'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <local_address>0.0.0.0</local_address>
+      <local_port datatype="int" operation="bitwise and">3</local_port>
+      <protocol>TCP</protocol>
+      <pid datatype="int" operation="greater than or equal">0</pid>
+    </port_state>
+    <port_state id="oval:org.mitre.oval.test:ste:871" version="1" comment="This state represents a port with a local address that matches the regular expression '([0-9])*\.([0-9])*\.([0-9])*\.([0-9])*', a local port that is greater than or equal to '0', a protocol that matches the regular expression '.*', and a pid greater than or equal to '0'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <local_address operation="pattern match">([0-9])*\.([0-9])*\.([0-9])*\.([0-9])*</local_address>
+      <local_port datatype="int" operation="greater than or equal">0</local_port>
+      <protocol operation="pattern match" var_ref="oval:org.mitre.oval.test:var:442" var_check="all"/>
+      <pid datatype="int" operation="greater than or equal">0</pid>
+    </port_state>
+    <port_state id="oval:org.mitre.oval.test:ste:1060" version="1" comment="This state represents a port with a local address that matches the regular expression '([0-9])*\.([0-9])*\.([0-9])*\.([0-9])*', a local port that is less than or equal to '0', a protocol not equal to 'UDP', and a pid greater than or equal to '0'." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <local_address operation="pattern match">([0-9])*\.([0-9])*\.([0-9])*\.([0-9])*</local_address>
+      <local_port datatype="int" operation="less than or equal">65535</local_port>
+      <protocol operation="not equal">UDP</protocol>
+      <pid datatype="int" operation="greater than or equal">0</pid>
+    </port_state>
+  </states>
+  <variables>
+    <constant_variable id="oval:org.mitre.oval.test:var:968" version="1" comment="This variable utilizes the work-around to use the pattern match operation on an enumeration. This variable is referenced in the object 'oval:org.mitre.oval.test:obj:1074'. This regular expression matches the string 'UDP'." datatype="string">
+      <value>^U[D]P$</value>
+    </constant_variable>
+    <constant_variable id="oval:org.mitre.oval.test:var:442" version="1" comment="This variable utilizes the work-around to use the pattern match operation on an enumeration. This variable is referenced in the state 'oval:org.mitre.oval.test:ste:871'. This regular expression matches any string." datatype="string">
+      <value>.*</value>
+    </constant_variable>
+  </variables>
+</oval_definitions>

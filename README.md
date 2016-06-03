@@ -6,6 +6,6 @@ The OVAL Test Content is a set of OVAL Definitions that provides a simple way to
 Current: [GitHub OVAL Test Content] (https://github.com/OVALProject/Test-Content)<br>
 Previous: [SourceForge OVAL Test Content] (http://sourceforge.net/p/ovaltestcontent)<br>
 
-Please see the [OVAL Web Site](http://oval.mitre.org/repository/about/testcontent.html) for more information about the OVAL Language.
+Please see the [OVAL Web Site](https://oval.cisecurity.org/) for more information about the OVAL Language.
 
-The OVAL Test Content operates under the [OVAL Terms of Use](http://oval.mitre.org/about/termsofuse.html).
+The OVAL Test Content operates under the [OVAL Terms of Use](https://oval.cisecurity.org/terms).
